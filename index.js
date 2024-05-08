@@ -1,10 +1,9 @@
-function minimumTotal(triangle) {
-  const n = triangle.length;
-  const dp = new Array(n + 1).fill(0);
-  for (let i = n - 1; i >= 0; i--) {
-    for (let j = 0; j <= i; j++) {
-      dp[j] = triangle[i][j] + Math.min(dp[j], dp[j + 1]);
-    }
+function maxSubArray(nums) {
+  let maxSum = nums[0];
+  let currentSum = nums[0];
+  for (let i = 1; i < nums.length; i++) {
+    currentSum = Math.max(nums[i], currentSum + nums[i]);
+    maxSum = Math.max(maxSum, currentSum);
   }
-  return dp[0];
+  return maxSum;
 }
